@@ -1,0 +1,13 @@
+*.exe
+*.obj
+*.o
+*.pdb
+*.ilk
+.vs/
+.vscode/
+Debug/
+Release/
+x64/
+x86/
+.DS_Store
+Thumbs.db

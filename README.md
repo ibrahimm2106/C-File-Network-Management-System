@@ -7,7 +7,7 @@
 
 A Windows-focused systems-programming project written in **C**. It combines file operations, validation, permission handling, buffered I/O and TCP file transfer through Winsock2 in a menu-driven command-line application.
 
-The repository is based on Operating Systems university coursework and is presented as a portfolio example of low-level C programming, OS-facing APIs, error handling and client-side socket programming.
+The repository is based on Operating Systems university coursework and is presented as a portfolio example of advanced C programming, OS-facing APIs, error handling and client-side socket programming.
 
 ## Portfolio highlights
 

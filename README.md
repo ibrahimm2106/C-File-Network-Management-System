@@ -28,17 +28,13 @@ These are cropped from the actual project run so the important evidence is visib
 
 ### Client application
 
-<p align="center">
-  <img src="docs/screenshots/client-demo.png" alt="Client application successfully sending a file over TCP" width="900">
-</p>
+![Client application successfully sending a file over TCP](./docs/screenshots/client-demo.png)
 
 The client authenticates, connects to `127.0.0.1:8080` and successfully sends `mohamedibrahim.txt`.
 
 ### Server application
 
-<p align="center">
-  <img src="docs/screenshots/server-demo.png" alt="TCP server receiving and saving the transferred file" width="900">
-</p>
+![TCP server receiving and saving the transferred file](./docs/screenshots/server-demo.png)
 
 The server listens on port `8080`, accepts the client connection and saves the received data as `received_file.txt`.
 

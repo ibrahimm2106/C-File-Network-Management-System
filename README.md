@@ -24,17 +24,17 @@ The project began as Operating Systems coursework and has been developed into a 
 
 ## Screenshots — verified local test
 
-These are cropped from the actual project run so the important evidence is visible without unrelated VS Code panels, menus or empty terminal space.
+These screenshots were captured from the working project running locally and show a successful TCP file transfer.
 
 ### Client application
 
-![Client application successfully sending a file over TCP](./docs/screenshots/client-demo.png)
+![Client application successfully sending a file over TCP](https://raw.githubusercontent.com/ibrahimm2106/C-File-Network-Management-System/main/docs/screenshots/client-demo.png)
 
 The client authenticates, connects to `127.0.0.1:8080` and successfully sends `mohamedibrahim.txt`.
 
 ### Server application
 
-![TCP server receiving and saving the transferred file](./docs/screenshots/server-demo.png)
+![TCP server receiving and saving the transferred file](https://raw.githubusercontent.com/ibrahimm2106/C-File-Network-Management-System/main/docs/screenshots/server-demo.png)
 
 The server listens on port `8080`, accepts the client connection and saves the received data as `received_file.txt`.
 

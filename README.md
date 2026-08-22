@@ -28,13 +28,13 @@ These screenshots were captured from the working project running locally and sho
 
 ### Client application
 
-![Client application successfully sending a file over TCP](https://raw.githubusercontent.com/ibrahimm2106/C-File-Network-Management-System/main/docs/screenshots/client-demo.png)
+![Client application successfully sending a file over TCP](https://raw.githubusercontent.com/ibrahimm2106/C-File-Network-Management-System/main/docs/screenshots/Client-demo.png)
 
 The client authenticates, connects to `127.0.0.1:8080` and successfully sends `mohamedibrahim.txt`.
 
 ### Server application
 
-![TCP server receiving and saving the transferred file](https://raw.githubusercontent.com/ibrahimm2106/C-File-Network-Management-System/main/docs/screenshots/server-demo.png)
+![TCP server receiving and saving the transferred file](https://raw.githubusercontent.com/ibrahimm2106/C-File-Network-Management-System/main/docs/screenshots/Server-demo.png)
 
 The server listens on port `8080`, accepts the client connection and saves the received data as `received_file.txt`.
 
@@ -98,8 +98,8 @@ flowchart TD
 │   └── server.c
 ├── docs/
 │   └── screenshots/
-│       ├── client-demo.png
-│       └── server-demo.png
+│       ├── Client-demo.png
+│       └── Server-demo.png
 ├── CMakeLists.txt
 ├── BUILD.md
 ├── README.md

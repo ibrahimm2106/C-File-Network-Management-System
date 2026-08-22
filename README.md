@@ -5,34 +5,38 @@
 ![CMake](https://img.shields.io/badge/CMake-Build-064F8C?logo=cmake)
 ![Build](https://github.com/ibrahimm2106/C-File-Network-Management-System/actions/workflows/windows-c-build.yml/badge.svg)
 
-A Windows-focused systems programming project written in **C**. It combines file operations, validation, permission handling, buffered I/O and **TCP file transfer with Winsock2** in a menu-driven command-line application.
+A Windows-focused **systems programming project in C** implementing file management, OS-facing APIs and TCP client-server networking with Winsock2.
 
-This repository is based on Operating Systems coursework and is presented as a portfolio project to showcase **advanced C programming**, **OS-facing APIs**, **error handling**, and **client-server socket programming** for graduate software engineering roles.
+The project began as Operating Systems coursework and has been developed into a portfolio repository for graduate and junior software engineering applications. It demonstrates practical C programming, file I/O, Windows APIs, networking, validation, error handling, build tooling and CI.
 
 ## Portfolio highlights
 
 - Implemented file creation, deletion and file-existence validation.
-- Changed file permissions using Windows file APIs.
+- Changed file permissions using Windows `_chmod` and `_access` APIs.
 - Merged files using buffered C file I/O.
 - Implemented reversible password-based XOR processing as an **educational** encryption/decryption exercise.
 - Built a TCP file-transfer **client** using Winsock2.
-- Built a companion TCP **server** to receive transferred files.
-- Added authentication gating before network transfer.
-- Added input and error handling for files, permissions, sockets and connections.
-- Structured the application around reusable C functions and a menu-driven interface.
-- Added **CMake** and automated **Windows CI** with GitHub Actions.
+- Built a dedicated TCP **server** that listens for a client connection and receives file data.
+- Added an authentication gate before network transfer.
+- Added validation and error handling for files, permissions, sockets and connection failures.
+- Structured functionality into reusable C functions behind a menu-driven CLI.
+- Added **CMake** build configuration and **GitHub Actions** Windows CI.
 
-## Demo previews
+## Screenshots — actual local test
 
-The following terminal-style previews are rendered from the project's expected client/server output so the workflow is easy to understand at a glance.
+The screenshots below were captured from the working project running locally. They show a successful transfer of `mohamedibrahim.txt` from the client application to the server on `127.0.0.1:8080`.
 
 ### Client application
 
-![Client terminal demo](docs/screenshots/client-demo.svg)
+![Client application running in VS Code](docs/screenshots/client-demo.jpg)
+
+The client authenticates, connects to the local TCP server and confirms that the file was sent successfully.
 
 ### Server application
 
-![Server terminal demo](docs/screenshots/server-demo.svg)
+![TCP server receiving the file](docs/screenshots/server-demo.jpg)
+
+The server listens on port `8080`, accepts the client connection and saves the received data as `received_file.txt`.
 
 ## Skills demonstrated
 
@@ -40,12 +44,13 @@ The following terminal-style previews are rendered from the project's expected c
 | --- | --- |
 | C | Functions, pointers, buffers, standard I/O and control flow |
 | File I/O | `fopen`, `fread`, `fwrite`, `remove`, buffered merge operations |
-| OS APIs | Windows `_access` and `_chmod` integration |
-| Networking | Winsock2 startup, sockets, TCP connection, `send`, `recv`, cleanup |
-| Validation | Menu, file-existence and permission validation |
+| Windows APIs | `_access` and `_chmod` |
+| Networking | Winsock2, TCP sockets, `connect`, `listen`, `accept`, `send`, `recv`, cleanup |
+| Validation | Menu input, file-existence and permission validation |
 | Error handling | File, socket and connection failure paths |
-| Build tooling | Visual Studio/MSVC and CMake |
-| CI | Automated Windows build on GitHub Actions |
+| Build tooling | MSVC / Visual Studio Build Tools and CMake |
+| CI | Automated Windows build through GitHub Actions |
+| Version control | Git and GitHub repository workflow |
 
 ## Features
 
@@ -56,8 +61,8 @@ The following terminal-style previews are rendered from the project's expected c
 | Check file existence | ✅ | Windows `_access` |
 | Change permissions | ✅ | Windows `_chmod` |
 | Merge two files | ✅ | Buffered `fread` / `fwrite` |
-| Encrypt/decrypt file | ✅ | Educational XOR transformation |
-| TCP file transfer client | ✅ | Winsock2 client socket |
+| Encrypt / decrypt file | ✅ | Educational XOR transformation |
+| TCP file-transfer client | ✅ | Winsock2 client socket |
 | TCP file receiver server | ✅ | Winsock2 listening server |
 | Authentication gate | ✅ | Credentials checked before transfer |
 | Directory monitoring | ⚠️ | Coursework source contains a stub only |
@@ -66,7 +71,7 @@ The following terminal-style previews are rendered from the project's expected c
 
 ```mermaid
 flowchart TD
-    A[CLI Menu] --> B{Operation}
+    A[CLI Menu] --> B{Selected operation}
     B --> C[File operations]
     B --> D[Permission handling]
     B --> E[Merge files]
@@ -79,7 +84,9 @@ flowchart TD
     G --> I[Authenticate user]
     I --> J[Winsock2 TCP client]
     J --> K[Server listens on port 8080]
-    K --> L[received_file.txt]
+    K --> L[Accept connection]
+    L --> M[Receive file bytes]
+    M --> N[received_file.txt]
 ```
 
 ## Project structure
@@ -91,8 +98,8 @@ flowchart TD
 │   └── server.c
 ├── docs/
 │   └── screenshots/
-│       ├── client-demo.svg
-│       └── server-demo.svg
+│       ├── client-demo.jpg
+│       └── server-demo.jpg
 ├── CMakeLists.txt
 ├── BUILD.md
 ├── README.md
@@ -113,7 +120,7 @@ cmake -S . -B build -A x64
 cmake --build build --config Release
 ```
 
-With a Visual Studio generator, the executables are produced inside the generated build configuration directory.
+With a Visual Studio generator, both executable targets are produced in the generated build configuration directory.
 
 ### Option 2 — Visual Studio Developer Command Prompt
 
@@ -122,15 +129,15 @@ cl src\file_management_system.c /Fe:file_management_system.exe
 cl src\server.c /Fe:server.exe
 ```
 
-Both source files use `#pragma comment(lib, "ws2_32.lib")` so MSVC links Winsock automatically.
+Both source files use `#pragma comment(lib, "ws2_32.lib")`, so MSVC links Winsock automatically.
 
-Run the server first:
+Start the server first:
 
 ```cmd
 server.exe
 ```
 
-Then run the client application:
+Then start the client application in a second terminal:
 
 ```cmd
 file_management_system.exe
@@ -138,9 +145,9 @@ file_management_system.exe
 
 See [`BUILD.md`](BUILD.md) for concise MSVC build notes.
 
-## Example workflow
+## Verified client-server workflow
 
-### Server terminal
+### Server output
 
 ```text
 Initialising Winsock...
@@ -152,45 +159,44 @@ File received successfully.
 Saved as received_file.txt
 ```
 
-### Client terminal
+### Client output
 
 ```text
-File Management System - Menu
-1. Create a file
-2. Delete a file
-3. Change file permissions
-4. Merge two files
-5. Encrypt a file
-6. Decrypt a file
-7. Monitor directory changes
-8. Send a file over the network
-9. Exit
-10. Test if a file exists
-
 Enter your choice: 8
 Enter your username: admin
 Enter your password: securepass
-Enter the file name to send: test.txt
+Enter the file name to send: mohamedibrahim.txt
 Enter the server IP address: 127.0.0.1
 Enter the server port: 8080
 Connected to server.
-File 'test.txt' sent successfully.
+File 'mohamedibrahim.txt' sent successfully.
 ```
 
-A recruiter reviewing the project can quickly follow the code from `main()` into small functions for individual OS, file and network operations.
+A recruiter reviewing the project can follow the implementation from `main()` into focused functions for file, permission and network operations, then inspect the companion server to see the other side of the TCP transfer.
 
 ## Security scope
 
 > [!IMPORTANT]
 > The encryption and authentication portions are coursework demonstrations, **not production security controls**.
 
-The XOR transformation is intentionally simple and should not be used to protect real sensitive data. Likewise, the project demonstrates C, operating-system and networking concepts rather than acting as a hardened file-transfer product.
+The XOR transformation is intentionally simple and should not be used to protect real sensitive data. The authentication credentials are also hard-coded for demonstration purposes. The repository is intended to demonstrate C, operating-system and networking concepts rather than act as a hardened file-transfer product.
 
-The directory-monitoring option is also explicitly retained as a **stub implementation** so the repository does not claim functionality that the coursework source did not complete.
+The directory-monitoring option is explicitly retained as a **stub implementation** so the repository does not claim functionality that the coursework source did not complete.
+
+## Potential next improvements
+
+Useful extensions for a future version would include:
+
+- automated unit and integration tests;
+- environment/configuration-based credentials rather than hard-coded values;
+- a file-transfer protocol that sends file metadata such as the original filename and size;
+- support for multiple sequential clients;
+- proper directory monitoring with Windows file-system APIs;
+- stronger authenticated encryption for real security use cases.
 
 ## Academic context
 
-This project is based on Operating Systems coursework at the University of Roehampton. The assessment involved C programming across file reading/writing, encryption/decryption, file creation/deletion, validation, error handling, operating-system protection/security and client-server networking concepts.
+This project is based on Operating Systems coursework at the University of Roehampton. The assessment covered C programming, file reading/writing, encryption/decryption, file creation/deletion, validation, error handling, operating-system protection/security and client-server networking concepts.
 
 ## Author
 

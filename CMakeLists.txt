@@ -14,8 +14,14 @@ add_executable(file_management_system
     src/file_management_system.c
 )
 
+add_executable(server
+    src/server.c
+)
+
 target_link_libraries(file_management_system PRIVATE ws2_32)
+target_link_libraries(server PRIVATE ws2_32)
 
 if(MSVC)
     target_compile_options(file_management_system PRIVATE /W4)
+    target_compile_options(server PRIVATE /W4)
 endif()

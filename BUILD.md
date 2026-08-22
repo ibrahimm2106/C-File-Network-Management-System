@@ -1,26 +1,49 @@
-# Build Notes
+# Build notes
 
-This project uses Windows-specific APIs (`Winsock2`, `_access`, and `_chmod`) and is intended to be built on Windows.
+## Requirements
 
-## CMake
+- Windows
+- Visual Studio Build Tools or Visual Studio with C/C++ support
+- Developer Command Prompt for Visual Studio
+- Optional: CMake 3.20+
+
+## Quick build with MSVC
+
+Open **Developer Command Prompt for Visual Studio** in the repository root and run:
 
 ```cmd
-cmake -S . -B build
-cmake --build build --config Release
+cl src\file_management_system.c /Fe:file_management_system.exe
+cl src\server.c /Fe:server.exe
 ```
 
-## Visual Studio Developer Command Prompt
+Both source files use `#pragma comment(lib, "ws2_32.lib")`, so MSVC links Winsock automatically.
+
+## Run the programs
+
+Start the receiver first:
 
 ```cmd
-cl src\file_management_system.c /Fe:file_management_system.exe ws2_32.lib
+server.exe
 ```
 
-The direct MSVC command produces:
+Then, in a second terminal, start the client application:
 
-```text
+```cmd
 file_management_system.exe
 ```
 
-## Continuous integration
+Use the following values for the client network-transfer option:
 
-`.github/workflows/windows-c-build.yml` configures and compiles the CMake project on `windows-latest` for pull requests and pushes to `main`.
+- Username: `admin`
+- Password: `securepass`
+- Server IP address: `127.0.0.1`
+- Server port: `8080`
+
+## Build with CMake
+
+```cmd
+cmake -S . -B build -A x64
+cmake --build build --config Release
+```
+
+With the current `CMakeLists.txt`, both the client and server targets are built.

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650" role="img" aria-label="Client terminal demo">
+  <rect width="1100" height="650" fill="#0d1117" rx="18"/>
+  <rect x="0" y="0" width="1100" height="44" fill="#161b22" rx="18"/>
+  <circle cx="28" cy="22" r="7" fill="#ff5f56"/>
+  <circle cx="52" cy="22" r="7" fill="#ffbd2e"/>
+  <circle cx="76" cy="22" r="7" fill="#27c93f"/>
+  <text x="550" y="28" text-anchor="middle" fill="#c9d1d9" font-size="18" font-family="Consolas, Menlo, monospace">client terminal</text>
+  <g fill="#c9d1d9" font-size="21" font-family="Consolas, Menlo, monospace" xml:space="preserve">
+    <text x="30" y="90">PS C:\Users\User\Documents\FileManagementSystem&gt; .\file_management_system.exe</text>
+    <text x="30" y="128">File Management System - Menu</text>
+    <text x="30" y="164">1. Create a file</text>
+    <text x="30" y="196">2. Delete a file</text>
+    <text x="30" y="228">3. Change file permissions</text>
+    <text x="30" y="260">4. Merge two files</text>
+    <text x="30" y="292">5. Encrypt a file</text>
+    <text x="30" y="324">6. Decrypt a file</text>
+    <text x="30" y="356">7. Monitor directory changes</text>
+    <text x="30" y="388">8. Send a file over the network</text>
+    <text x="30" y="420">9. Exit</text>
+    <text x="30" y="452">10. Test if a file exists</text>
+    <text x="30" y="500">Enter your choice: 8</text>
+    <text x="30" y="532">Enter your username: admin</text>
+    <text x="30" y="564">Enter your password: securepass</text>
+    <text x="30" y="596">Enter the file name to send: test.txt</text>
+    <text x="30" y="628">Server: 127.0.0.1:8080    Connected to server.    File 'test.txt' sent successfully.</text>
+  </g>
+</svg>

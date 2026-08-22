@@ -9,5 +9,8 @@ Debug/
 Release/
 x64/
 x86/
+build/
+received_file.txt
+test.txt
 .DS_Store
 Thumbs.db

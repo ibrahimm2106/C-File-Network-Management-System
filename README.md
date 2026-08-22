@@ -22,19 +22,23 @@ The project began as Operating Systems coursework and has been developed into a 
 - Structured functionality into reusable C functions behind a menu-driven CLI.
 - Added **CMake** build configuration and **GitHub Actions** Windows CI.
 
-## Screenshots — actual local test
+## Screenshots — verified local test
 
-The screenshots below were captured from the working project running locally and cropped for readability. They show a successful transfer of `mohamedibrahim.txt` from the client application to the server on `127.0.0.1:8080`.
+These are cropped from the actual project run so the important evidence is visible without unrelated VS Code panels, menus or empty terminal space.
 
 ### Client application
 
-![Client application running in VS Code](docs/screenshots/client-demo.jpg)
+<p align="center">
+  <img src="docs/screenshots/client-demo.png" alt="Client application successfully sending a file over TCP" width="900">
+</p>
 
-The client authenticates, connects to the local TCP server and confirms that the file was sent successfully.
+The client authenticates, connects to `127.0.0.1:8080` and successfully sends `mohamedibrahim.txt`.
 
 ### Server application
 
-![TCP server receiving the file](docs/screenshots/server-demo.jpg)
+<p align="center">
+  <img src="docs/screenshots/server-demo.png" alt="TCP server receiving and saving the transferred file" width="900">
+</p>
 
 The server listens on port `8080`, accepts the client connection and saves the received data as `received_file.txt`.
 
@@ -98,8 +102,8 @@ flowchart TD
 │   └── server.c
 ├── docs/
 │   └── screenshots/
-│       ├── client-demo.jpg
-│       └── server-demo.jpg
+│       ├── client-demo.png
+│       └── server-demo.png
 ├── CMakeLists.txt
 ├── BUILD.md
 ├── README.md

@@ -24,17 +24,17 @@ The project began as Operating Systems coursework and has been developed into a 
 
 ## Screenshots — actual local test
 
-The screenshots below were captured from the working project running locally. They show a successful transfer of `mohamedibrahim.txt` from the client application to the server on `127.0.0.1:8080`.
+The screenshots below were captured from the working project running locally and cropped for readability. They show a successful transfer of `mohamedibrahim.txt` from the client application to the server on `127.0.0.1:8080`.
 
 ### Client application
 
-![Client application running in VS Code](docs/screenshots/client-demo.jpg)
+![Client application running in VS Code](docs/screenshots/client-demo.webp)
 
 The client authenticates, connects to the local TCP server and confirms that the file was sent successfully.
 
 ### Server application
 
-![TCP server receiving the file](docs/screenshots/server-demo.jpg)
+![TCP server receiving the file](docs/screenshots/server-demo.webp)
 
 The server listens on port `8080`, accepts the client connection and saves the received data as `received_file.txt`.
 
@@ -98,8 +98,8 @@ flowchart TD
 │   └── server.c
 ├── docs/
 │   └── screenshots/
-│       ├── client-demo.jpg
-│       └── server-demo.jpg
+│       ├── client-demo.webp
+│       └── server-demo.webp
 ├── CMakeLists.txt
 ├── BUILD.md
 ├── README.md

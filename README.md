@@ -28,13 +28,13 @@ The screenshots below were captured from the working project running locally and
 
 ### Client application
 
-![Client application running in VS Code](docs/screenshots/client-demo.webp)
+![Client application running in VS Code](docs/screenshots/client-demo.jpg)
 
 The client authenticates, connects to the local TCP server and confirms that the file was sent successfully.
 
 ### Server application
 
-![TCP server receiving the file](docs/screenshots/server-demo.webp)
+![TCP server receiving the file](docs/screenshots/server-demo.jpg)
 
 The server listens on port `8080`, accepts the client connection and saves the received data as `received_file.txt`.
 
@@ -98,8 +98,8 @@ flowchart TD
 │   └── server.c
 ├── docs/
 │   └── screenshots/
-│       ├── client-demo.webp
-│       └── server-demo.webp
+│       ├── client-demo.jpg
+│       └── server-demo.jpg
 ├── CMakeLists.txt
 ├── BUILD.md
 ├── README.md
